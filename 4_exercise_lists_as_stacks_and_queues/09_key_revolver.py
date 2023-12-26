@@ -10,20 +10,17 @@ reload_counter = 0
 
 while bullets_deque and lock_deque:
     current_lock = lock_deque[0]
-    lock_destroyed = False
-    while not lock_destroyed and bullets_deque:
+    current_bullet = bullets_deque.pop()
+    reload_counter += 1
+    if current_bullet <= current_lock:
+        print("Bang!")
+        lock_deque.popleft()
+    else:
+        print("Ping!")
+    if reload_counter == barrel_size and bullets_deque:
+        print("Reloading!")
+        reload_counter = 0
 
-        current_bullet = bullets_deque.pop()
-        reload_counter += 1
-        if current_bullet <= current_lock:
-            print("Bang!")
-            lock_destroyed = True
-            lock_deque.popleft()
-        else:
-            print("Ping!")
-        if reload_counter == barrel_size and bullets_deque:
-            print("Reloading!")
-            reload_counter = 0
 if lock_deque:
     print(f"Couldn't get through. Locks left: {len(lock_deque)}")
 else:
