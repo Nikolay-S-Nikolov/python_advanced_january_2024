@@ -1,10 +1,11 @@
 def func_executor(*funcs):
-    results = []
-
-    for func, arg in funcs:
-        results.append(f'{func.__name__} - {func(*arg)}')
-
-    return "\n".join(results)
+    # results = []
+    #
+    # for func, arg in funcs:
+    #     results.append(f'{func.__name__} - {func(*arg)}')
+    #
+    # return "\n".join(results)
+    return "\n".join(f'{func.__name__} - {func(*arg)}' for func, arg in funcs)
 
 
 def sum_numbers(num1, num2):
