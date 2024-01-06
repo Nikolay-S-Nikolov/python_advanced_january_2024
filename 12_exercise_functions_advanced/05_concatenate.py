@@ -1,7 +1,5 @@
 def concatenate(*args, **kwargs):
-    result = ''
-    for arg in args:
-        result += arg
+    result = ''.join(args)
     for key, value in kwargs.items():
         if key in result:
             result = result.replace(key, value)
