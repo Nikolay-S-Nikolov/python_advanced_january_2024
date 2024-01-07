@@ -1,7 +1,7 @@
-def fill_the_box(*data):
-    cube_volume = data[0] * data[1] * data[2]
+def fill_the_box(height, length, width, *data):
+    cube_volume = height*length*width
 
-    for idx in range(3, len(data)):
+    for idx in range(len(data)):
 
         if data[idx] == 'Finish':
             break
@@ -10,7 +10,7 @@ def fill_the_box(*data):
             current_cubes_left = data[idx] - cube_volume
             return f"No more free space!" \
                    f" You have " \
-                   f"{current_cubes_left +sum(data[i] for i in range(idx+1, len(data)) if data[i] != 'Finish')}" \
+                   f"{current_cubes_left + sum(data[i] for i in range(idx + 1, len(data)) if data[i] != 'Finish')}" \
                    f" more cubes."
 
         cube_volume -= data[idx]
