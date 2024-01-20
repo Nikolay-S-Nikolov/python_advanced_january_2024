@@ -25,9 +25,11 @@ line = input()
 while line != "Remove":
     # The line contains the searched number as a text
     searched = line
+
     try:
         # Try to print the corresponding number from the dictionary
         print(numbers_dictionary[searched])
+
     except KeyError:
         # Handle the case when the searched number is not in the dictionary
         print("Number does not exist in dictionary")
@@ -40,9 +42,11 @@ line = input()
 while line != "End":
     # The line contains the searched number as a text
     searched = line
+
     try:
         # Try to remove the searched number from the dictionary
         del numbers_dictionary[searched]
+
     except KeyError:
         # Handle the case when the number is not in the dictionary
         print("Number does not exist in dictionary")
