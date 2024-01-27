@@ -42,6 +42,10 @@ functions = {
 command = input().split('-')
 while command[0] != 'End':
     action, file_name, *info = command
+    try:
+        os.mkdir(os.path.join(WORKING_DIRECTORY_PATH, 'files'))
+    except FileExistsError:
+        pass
     file_path = os.path.join(WORKING_DIRECTORY_PATH, 'files', f'{file_name}')
 
     functions[action](file_path, *info)
