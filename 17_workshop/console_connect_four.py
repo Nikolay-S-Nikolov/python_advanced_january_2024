@@ -55,8 +55,7 @@ def print_board(matrix):
 COL, ROW = 7, 6
 
 board = [[0] * COL for _ in range(ROW)]
-player_one_symbol, player_two_symbol = input('Please choose a symbol for player 1: '), input(
-    'Please choose a symbol for player 2: ')
+player_one_symbol, player_two_symbol = 1, 2
 turn = deque([[1, player_one_symbol], [2, player_two_symbol]])
 mapper = [
     (-1, 0),  # Down
