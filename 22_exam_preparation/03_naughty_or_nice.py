@@ -1,6 +1,7 @@
 def naughty_or_nice_list(kids_names: list, *args, **kwargs):
     kids_dict = {"Nice": [],
-                 "Naughty": []
+                 "Naughty": [],
+                 "Not found": []
                  }
 
     for argument in args:
@@ -22,7 +23,6 @@ def naughty_or_nice_list(kids_names: list, *args, **kwargs):
             kids_names.pop(index)
 
     if kids_names:
-        kids_dict["Not found"] = []
         for kids in kids_names:
             kids_dict["Not found"].append(kids[1])
 
