@@ -1,22 +1,3 @@
-from collections import deque
-
-
-def move_rover(direction: str, pos: list):
-    position = commands_dict[direction](pos)
-    position_dict = {-1: 5,
-                     0: 0,
-                     1: 1,
-                     2: 2,
-                     3: 3,
-                     4: 4,
-                     5: 5,
-                     6: 0,
-                     }
-    new_pos = [position_dict[position[0]], position_dict[position[1]]]
-
-    return new_pos
-
-
 rover_pos = []
 mars = []
 
@@ -27,24 +8,22 @@ for row in range(6):
         rover_pos.append(row)
         rover_pos.append(mars[row].index("E"))
 
-commands = deque(input().split(', '))
+commands = input().split(', ')
 
 commands_dict = {
-    "up": lambda x: (x[0] - 1, x[1]),
-    "down": lambda x: (x[0] + 1, x[1]),
-    "left": lambda x: (x[0], x[1] - 1),
-    "right": lambda x: (x[0], x[1] + 1)
+    "up": lambda x: ((x[0] - 1) % 6, x[1]),
+    "down": lambda x: ((x[0] + 1) % 6, x[1]),
+    "left": lambda x: (x[0], (x[1] - 1) % 6),
+    "right": lambda x: (x[0], (x[1] + 1) % 6)
 }
 
 water_found = False
 metal_found = False
 concrete_found = False
 
-while commands:
+for move in commands:
 
-    move = commands.popleft()
-    # mars[rover_pos[0]][rover_pos[1]] = "-"
-    rover_pos = move_rover(move, rover_pos)
+    rover_pos = commands_dict[move](rover_pos)
     rover_lands_position = mars[rover_pos[0]][rover_pos[1]]
 
     if rover_lands_position == "W":
