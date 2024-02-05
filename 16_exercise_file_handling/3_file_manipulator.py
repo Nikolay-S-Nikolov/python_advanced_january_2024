@@ -15,6 +15,7 @@ def add_content(path, data):
 
 def replace_string(path, *data):
     old_string, new_string = data
+
     try:
         with open(path, 'r+') as file:
             text = file.read()
@@ -28,6 +29,7 @@ def replace_string(path, *data):
 def delete_file(path):
     try:
         os.remove(path)
+
     except FileNotFoundError:
         print("An error occurred")
 
@@ -42,10 +44,12 @@ functions = {
 command = input().split('-')
 while command[0] != 'End':
     action, file_name, *info = command
+
     try:
         os.mkdir(os.path.join(WORKING_DIRECTORY_PATH, 'files'))
     except FileExistsError:
         pass
+
     file_path = os.path.join(WORKING_DIRECTORY_PATH, 'files', f'{file_name}')
 
     functions[action](file_path, *info)

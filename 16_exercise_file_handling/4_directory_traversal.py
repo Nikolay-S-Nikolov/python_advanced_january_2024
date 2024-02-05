@@ -2,6 +2,7 @@ import os
 
 
 def find_files(dir_name, first_level=False):
+
     for file_or_dir in os.listdir(dir_name):
         file_name = os.path.join(dir_name, file_or_dir)
 
@@ -32,5 +33,6 @@ with open('report.txt', 'w') as report_file:
 
     for extension, files in sorted(files_grouped_by_extension.items(), key=lambda x: (x[0], x[1])):
         report_file.write(f'.{extension}\n')
+
         for file in files:
             report_file.write(f'{file}\n')
