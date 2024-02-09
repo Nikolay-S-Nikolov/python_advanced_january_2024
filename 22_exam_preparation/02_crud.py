@@ -43,5 +43,4 @@ while command != 'Stop':
     functions[action](position[0], position[1], data)
     command = input()
 
-for row in matrix:
-    print(' '.join(row))
+[print(' '.join(row)) for row in matrix]
